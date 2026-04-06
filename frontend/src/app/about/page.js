@@ -208,7 +208,7 @@ export default function AboutPage() {
                         <span className="text-red-500 font-bold tracking-wider uppercase text-sm mb-2 block">The Challenge</span>
                         <h3 className="text-3xl font-bold text-slate-900 mb-4">Why do we need this?</h3>
                         <p className="text-slate-600 leading-relaxed mb-6">
-                            Food fraud costs the global economy $40 billion annually. Consumers simply don't know where their food comes from, and honest farmers aren't getting paid what they deserve.
+                            Food fraud costs the global economy $40 billion annually. Consumers simply don&apos;t know where their food comes from, and honest farmers aren&apos;t getting paid what they deserve.
                         </p>
                         <ul className="space-y-3">
                             {['Counterfeit Organic Labels', 'Supply Chain Opaque', 'Unfair Farmer Pay'].map((item, i) => (
@@ -224,69 +224,6 @@ export default function AboutPage() {
 
             {/* ANIMATED JOURNEY MAP */}
             <JourneySection />
-
-            {/* Team Members Section */}
-            <div className="py-20 bg-[#022c22] text-center px-6 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10"
-                    style={{ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
-                </div>
-
-                <div className="relative z-10 max-w-5xl mx-auto">
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meet Our Team</h2>
-                        <p className="text-slate-300 mb-12 max-w-2xl mx-auto">
-                            The passionate minds behind FarmChain working to revolutionize food transparency.
-                        </p>
-                        
-                        <div className="flex flex-wrap justify-center items-start gap-6 md:gap-10">
-                            {[
-                                {
-                                    name: "Team Member - 1",
-                                    img: "/team/team1.jpg",
-                                    imgPosition: "object-center"
-                                },
-                                {
-                                    name: "Team Member - 2",
-                                    img: "/team/team2.jpg",
-                                    imgPosition: "object-center"
-                                },
-                                {
-                                    name: "Team Member - 3",
-                                    img: "/team/team3.jpg",
-                                    imgPosition: "object-top"
-                                },
-                                {
-                                    name: "Team Member - 4",
-                                    img: "/team/team4.jpg",
-                                    imgPosition: "object-center"
-                                }
-                            ].map((member, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="group"
-                                >
-                                    <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-full overflow-hidden border-4 border-emerald-500/30 group-hover:border-emerald-400 transition-all duration-300 shadow-xl">
-                                        <img
-                                            src={member.img}
-                                            alt={member.name}
-                                            className={`w-full h-full object-cover ${member.imgPosition} group-hover:scale-110 transition-transform duration-500`}
-                                        />
-                                    </div>
-                                    <h3 className="text-white font-bold text-lg">{member.name}</h3>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
         </main>
     );
 }
