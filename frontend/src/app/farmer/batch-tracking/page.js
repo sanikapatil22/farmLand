@@ -40,6 +40,7 @@ import { graphqlRequest } from '@/lib/apollo-client';
 import { MY_FARMS_QUERY } from '@/lib/graphql/farm';
 import { CREATE_BATCH_MUTATION, LIST_BATCHES_QUERY, DELETE_BATCH_MUTATION, LOG_ACTIVITY_MUTATION, VERIFY_ORGANIC_QUERY } from '@/lib/graphql/batch';
 import { CREATE_PRODUCT_MUTATION } from '@/lib/graphql/product';
+import { analyzeTimeline } from '@/lib/timeline/analyzeTimeline';
 import QRCode from 'react-qr-code';
 import { toPng } from 'html-to-image';
 
@@ -628,6 +629,22 @@ export default function BatchTracking() {
                                             </div>
                                             
                                             <div className="p-4 bg-gradient-to-b from-slate-50 to-white">
+                                                {(() => {
+                                                    const timelineWarnings = analyzeTimeline(batch.activities || []);
+                                                    return timelineWarnings.length > 0 ? (
+                                                        <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
+                                                            <p className="text-sm font-bold text-amber-900">⚠ Timeline Warnings</p>
+                                                            <ul className="mt-2 space-y-1">
+                                                                {timelineWarnings.map((warning, warningIdx) => (
+                                                                    <li key={`${batch.id}-${warning.type}-${warningIdx}`} className="text-xs text-amber-800">
+                                                                        • {warning.message}
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    ) : null;
+                                                })()}
+
                                                 <div className="space-y-4 relative pl-2">
                                                     {/* Vertical line connector */}
                                                     <div className="absolute left-[13px] top-2 bottom-2 w-0.5 bg-gradient-to-b from-emerald-300 via-emerald-400 to-slate-200" />

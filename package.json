@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
     "hh:compile": "hardhat compile",
     "deploy:sepolia": "hardhat run scripts/deploy.ts --network sepolia"
   },
@@ -11,6 +14,7 @@
     "@nomicfoundation/hardhat-toolbox-viem": "^5.0.3",
     "@types/node": "^22.19.17",
     "dotenv": "^17.4.0",
+    "concurrently": "^9.2.1",
     "forge-std": "github:foundry-rs/forge-std#v1.9.4",
     "hardhat": "^3.3.0",
     "typescript": "~5.8.0",
